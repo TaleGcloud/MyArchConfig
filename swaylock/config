@@ -1,0 +1,6 @@
+screenshots
+clock
+indicator
+indicator-radius=300
+indicator-thickness=15
+effect-blur=10x5

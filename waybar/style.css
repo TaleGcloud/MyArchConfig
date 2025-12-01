@@ -1,0 +1,121 @@
+* {
+    font-family: JetBrainsMono Nerd Font, WenQuanYi Micro Hei;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+window#waybar {
+    background: rgba(40, 40, 40, 0.5);
+    color: #ddd;
+}
+
+tooltip {
+    background: #111;
+}
+tooltip label {
+    color: #ddd;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: #ddd;
+}
+
+#workspaces button.focused {
+    color: #eee;
+    background: rgba(200, 200, 200, 0.7);
+}
+
+#cpu,
+#memory,
+#disk,
+#temperature,
+#battery,
+#custom-media,
+#tray,
+#pulseaudio,
+#wireplumber,
+#backlight,
+#network,
+#clock {
+    padding: 0 7px;
+    color: #ddd;
+}
+
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#clock {
+    font-family: JetBrainsMono Nerd Font;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0 20px;
+}
+
+#battery icon {
+  color: red;
+}
+
+#battery.charging, #battery.plugged {
+    color: #ffffff;
+    background-color: #26a65b;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+
+#battery.warning:not(.charging) {
+  background-color: #f95;
+  color: #fff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+  background-color: #f23;
+  color: #fff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: #000000;
+}
+
+#network.disconnected {
+  background-color: #f23;
+}
+
+#temperature.critical {
+  background-color: #eb4d4b;
+}
+
+#idle_inhibitor.activated {
+  background-color: #ecf0f1;
+  color: #2d3436;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
+}
