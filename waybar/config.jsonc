@@ -25,10 +25,12 @@
         "network"
     ],
     "cpu": {
-        "format": "{usage}% "
+        "format": "{usage}% ",
+        "on-click-right": "kitty -e btop"
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "on-click-right": "kitty -e btop"
     },
     "disk": {
         "format": "{percentage_used}% "
@@ -93,11 +95,11 @@
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "{essid}({signalStrength}%)  ",
+        "format-wifi": "({signalStrength}%)  ",
         "format-ethernet": "{ifname} 󰈀 ",
-        "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname}(No IP) 󰈀 ",
-        "format-disconnected": "{ifname} Disconnected  ",
+        "format-disconnected": "{ifname}  ",
+        "tooltip-format": "{essid}({signalStrength}%)\n{ifname} {gwaddr}",
         "format-alt": "{ifname}: {ipaddr}/{cidr} ",
         "on-click-right": "kitty -e nmtui"
     }

@@ -3,4 +3,9 @@ clock
 indicator
 indicator-radius=300
 indicator-thickness=15
-effect-blur=10x5
+effect-blur=20x5
+
+timestr=%H:%M
+datestr=%Y-%m-%d %a
+
+layout-text-color=#FFFFFF
