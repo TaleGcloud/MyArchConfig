@@ -3,6 +3,10 @@
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
+environment {
+    XCUROSR_THEME "Bibata-Modern-Ice"
+}
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
@@ -280,7 +284,7 @@ recent-windows {
         active-color "#999999ff"
         urgent-color "#ff9999ff"
         padding 30
-        corner-radius 0
+        corner-radius 4
     }
 
     previews {
@@ -310,7 +314,6 @@ cursor {
 spawn-at-startup "waybar"
 spawn-sh-at-startup "clipse --listen"
 spawn-at-startup "swww-daemon"
-spawn-at-startup "swww" "img" "~/Downloads/wallpaper/【哲风壁纸】动漫场景-城市废墟.png"
 
 // spawn-sh-at-startup "swaybg -i ~/Downloads/wallpaper/【哲风壁纸】动漫场景-城市废墟.png -m fill"
 
@@ -652,9 +655,9 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+Alt+A { screenshot; }
+    Mod+Alt+S { screenshot-screen; }
+    Mod+Alt+W { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here

@@ -33,7 +33,8 @@
         "on-click-right": "kitty -e btop"
     },
     "disk": {
-        "format": "{percentage_used}% "
+        "format": "{percentage_used}% ",
+        "on-click-right": "kitty -e yazi"
     },
     "temperature": {
         "thermal-zone": 2,
@@ -66,7 +67,7 @@
         "format": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": ["", "", ""],
-        "on-click-right": "pwvucontrol",
+        "on-click-right": "pavucontrol",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 5
     },
