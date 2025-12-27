@@ -12,11 +12,8 @@ set laststatus=1
 
 inoremap jk <Esc>
 onoremap jk <Esc>
-<<<<<<< HEAD
-=======
 noremap J 5j
 noremap K 5k
->>>>>>> 7030a41 (update)
 
 call plug#begin()
 
