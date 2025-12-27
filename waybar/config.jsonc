@@ -18,9 +18,9 @@
     "modules-right": [
         "custom/media",
         "tray",
+        "power-profiles-daemon",
         "wireplumber#sink",
         "wireplumber#source",
-        // "pulseaudio",
         "backlight",
         "network"
     ],
@@ -58,14 +58,59 @@
     },
     "clock": {
         "format-alt": "{:%Y-%m-%d}",
-        "tooltip-format": "<tt>{calendar}</tt>"
+        "tooltip-format": "{calendar}",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 4,
+            "weeks-pos"     : "left",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ff6699'><b>{}</b></span>",
+                "weeks":      "<span color='#7aa2f7'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "days":       "<span color='#aaaaaa'>{}</span>",
+                "today":      "<span background='#ffffff' color='#000000'><b>{}</b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_down",
+            "on-scroll-down": "shift_up"
+        }
+    },
+    "custom/media": {
+        "format": "{text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "󰎆"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py -x edge 2> /dev/null",
+        "tooltip-format": "{text}",
+        "tooltip": true,
+        "on-click": "playerctl -i edge play-pause",
+        "on-scroll-up": "playerctl -i edge previous",
+        "on-scroll-down": "playerctl -i edge next"
     },
     "tray": {
         "spacing": 10
     },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
     "wireplumber#sink": {
         "format": "{volume}% {icon}",
-        "format-muted": "",
+        "format-muted": "",
         "format-icons": ["", "", ""],
         "on-click-right": "pavucontrol",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
@@ -75,28 +120,16 @@
         "node-type": "Audio/Source",
         "format": "{volume}% ",
         "format-muted": "",
+        "on-click-right": "pavucontrol",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "scroll-step": 5
-    },
-    "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pwvucontrol"
     },
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "({signalStrength}%)  ",
+        "format-wifi": "{signalStrength}%  ",
         "format-ethernet": "{ifname} 󰈀 ",
         "format-linked": "{ifname}(No IP) 󰈀 ",
         "format-disconnected": "{ifname}  ",
