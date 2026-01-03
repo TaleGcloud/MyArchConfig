@@ -412,8 +412,8 @@ binds {
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
 
-    Mod+B hotkey-overlay-title="toggle bar" { spawn "pkill" "-USR1" "waybar"; }
-    Mod+Shift+B hotkey-overlay-title="refresh bar" { spawn-sh "pkill waybar || true && waybar"; }
+    Mod+B hotkey-overlay-title="Toggle bar" { spawn "pkill" "-USR1" "waybar"; }
+    Mod+Shift+B hotkey-overlay-title="Refresh bar" { spawn-sh "pkill waybar || true && waybar"; }
 
     Alt+F4 { spawn "wlogout"; }
 
