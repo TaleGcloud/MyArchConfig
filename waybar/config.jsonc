@@ -55,6 +55,9 @@
             "critical": 15
         }
     },
+    "niri/window": {
+        "separate-outputs": true
+    },
     "clock": {
         "format-alt": "{:%Y-%m-%d}",
         "tooltip-format": "{calendar}",
