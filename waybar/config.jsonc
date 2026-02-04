@@ -56,7 +56,8 @@
         }
     },
     "niri/window": {
-        "separate-outputs": true
+        "separate-outputs": true,
+        "tooltip": false
     },
     "clock": {
         "format-alt": "{:%Y-%m-%d}",
