@@ -7,9 +7,9 @@
         "cpu",
         "memory",
         "disk",
-        // "temperature",
         "battery",
-        "niri/workspaces",
+        // "niri/workspaces",
+        "cffi/niri-taskbar",
         "niri/window"
     ],
     "modules-center": [
@@ -35,14 +35,6 @@
         "format": "{percentage_used}% ",
         "on-click-right": "kitty -e yazi"
     },
-    "temperature": {
-        "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
     "battery": {
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}%  ",
@@ -54,6 +46,26 @@
             "warning": 30,
             "critical": 15
         }
+    },
+    "niri/window": {
+        "separate-outputs": true,
+        "tooltip": false
+    },
+    "niri/workspaces": {
+        "separate-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "empty": ""
+        },
+        "icon-size": 16,
+        "spacing": 6,
+        "opacity-empty": 0.4
+    },
+    "cffi/niri-taskbar": {
+        "module_path": "/home/TaleG/.config/waybar/libniri_taskbar.so",
+        "display_mode": "by_workspace"
     },
     "niri/window": {
         "separate-outputs": true,
