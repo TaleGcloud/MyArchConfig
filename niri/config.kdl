@@ -1,14 +1,8 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://yalter.github.io/niri/Configuration:-Introduction
-
 environment {
     XCUROSR_THEME "Bibata-Modern-Ice"
 }
 
 // Input device configuration.
-// Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
 input {
     keyboard {
@@ -73,22 +67,13 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
 output "eDP-1" {
-    // Uncomment this line to disable this output.
     // off
 
-    // Resolution and, optionally, refresh rate of the output.
     // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
     mode "2560x1600@120.000"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
@@ -98,15 +83,6 @@ output "eDP-1" {
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
 
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
     position x=0 y=0
 }
 
@@ -116,9 +92,6 @@ output "HDMI-A-1" {
     scale 1
 }
 
-// Settings that influence how windows are positioned and sized.
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
     background-color "#00000000"
@@ -186,7 +159,7 @@ layout {
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        inactive-color "#50505050"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -207,7 +180,6 @@ layout {
     // You can also add a border. It's similar to the focus ring, but always visible.
     border {
         // The settings are the same as for the focus ring.
-        // If you enable the border, you probably want to disable the focus ring.
         off
 
         width 4
@@ -313,10 +285,8 @@ cursor {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
-spawn-sh-at-startup "clipse --listen"
+spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-at-startup "swww-daemon"
-
-// spawn-sh-at-startup "swaybg -i ~/Downloads/wallpaper/【哲风壁纸】动漫场景-城市废墟.png -m fill"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -357,27 +327,6 @@ animations {
 // https://yalter.github.io/niri/Configuration:-Window-Rules
 
 
-// Open the Firefox picture-in-picture player as floating by default.
-/-window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
-}
-
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
@@ -393,58 +342,40 @@ layer-rule {
 }
 
 binds {
-    // Keys consist of modifiers separated by + signs, followed by an XKB key name
-    // in the end. To find an XKB name for a particular key, you may use a program
-    // like wev.
-    //
-    // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
-    // when running as a winit window.
-    //
-    // Most actions that you can bind here can also be invoked programmatically with
-    // `niri msg action do-something`.
-
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Slash { show-hotkey-overlay; }
 
-    // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
-
-    Mod+B hotkey-overlay-title="Toggle bar" { spawn "pkill" "-USR1" "waybar"; }
-    Mod+Shift+B hotkey-overlay-title="Refresh bar" { spawn-sh "pkill waybar || true && waybar"; }
-
     Alt+F4 { spawn "wlogout"; }
 
-    Mod+E hotkey-overlay-title="Open file explorer" { spawn "kitty" "-e" "yazi"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
 
-    // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
-    // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
-    // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    Mod+E hotkey-overlay-title="Open file explorer" { spawn "kitty" "-e" "yazi"; }
+    Mod+B hotkey-overlay-title="Toggle bar" { spawn "pkill" "-USR1" "waybar"; }
+
+    Mod+Shift+B hotkey-overlay-title="Refresh bar" { spawn-sh "pkill waybar || true && waybar"; }
+
+    Mod+Alt+I { spawn "hyprpicker"; }
+    Mod+Alt+P { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
+    Mod+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+
+    Mod+Alt+A { screenshot; }
+    Mod+Alt+S { screenshot-screen; }
+    Mod+Alt+W { screenshot-window; }
 
     XF86AudioPlay       allow-when-locked=true { spawn-sh "playerctl -i edge play-pause"; }
     XF86AudioPrev       allow-when-locked=true { spawn-sh "playerctl -i edge previous"; }
     XF86AudioNext       allow-when-locked=true { spawn-sh "playerctl -i edge next"; }
 
-    // Example volume keys mappings for PipeWire & WirePlumber.
-    // The allow-when-locked=true property makes them work even when the session is locked.
-    // Using spawn-sh allows to pass multiple arguments together with the command.
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    // Example brightness key mappings for brightnessctl.
-    // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
-    // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
-    // Open/close the Overview: a zoomed-out view of workspaces and windows.
-    // You can also move the mouse into the top-left hot corner,
-    // or do a four-finger swipe up on a touchpad.
     Mod+O repeat=false { toggle-overview; }
 
     Mod+Delete repeat=false { close-window; }
@@ -552,12 +483,6 @@ binds {
     // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
     // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
 
-    // You can refer to workspaces by index. However, keep in mind that
-    // niri is a dynamic workspace system, so these commands are kind of
-    // "best effort". Trying to refer to a workspace index bigger than
-    // the current workspace count will instead refer to the bottommost
-    // (empty) workspace.
-    //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
     Mod+1 { focus-workspace 1; }
@@ -609,13 +534,9 @@ binds {
     Mod+Ctrl+F { expand-column-to-available-width; }
 
     Mod+C { center-column; }
-    // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
 
-    // Finer width adjustments.
-    // This command can also:
-    // * set width in pixels: "1000"
-    // * adjust width in pixels: "-5" or "+5"
+    // * set width in pixels: "1000" adjust width in pixels: "-5" or "+5"
     // * set width as a percentage of screen width: "25%"
     // * adjust width as a percentage of screen width: "-10%" or "+10%"
     // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
@@ -635,18 +556,6 @@ binds {
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
     Mod+W { toggle-column-tabbed-display; }
-
-    // Actions to switch layouts.
-    // Note: if you uncomment these, make sure you do NOT have
-    // a matching layout switch hotkey configured in xkb options above.
-    // Having both at once on the same hotkey will break the switching,
-    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
-
-    Mod+Alt+A { screenshot; }
-    Mod+Alt+S { screenshot-screen; }
-    Mod+Alt+W { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
