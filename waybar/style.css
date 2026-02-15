@@ -96,7 +96,7 @@ tooltip label {
 }
 
 #battery.warning:not(.charging) {
-  background-color: #f95;
+  background-color: rgba(254, 100, 5, 0.6);
   color: #fff;
   animation-name: blink;
   animation-duration: 0.5s;
@@ -106,7 +106,7 @@ tooltip label {
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f23;
+  background-color: rgba(255, 50, 50, 0.6);
   color: #fff;
   animation-name: blink;
   animation-duration: 0.5s;
@@ -116,11 +116,11 @@ tooltip label {
 }
 
 #network.disconnected {
-  background-color: rgba(255, 34, 51, 0.6);
+  background-color: rgba(255, 50, 50, 0.6);
 }
 
 #temperature.critical {
-  background-color: #eb4d4b;
+  background-color: rgba(255, 50, 50, 0.6);
 }
 
 #tray > .passive {
@@ -129,5 +129,5 @@ tooltip label {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
+  background-color: rgba(255, 50, 50, 0.6);
 }
