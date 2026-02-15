@@ -112,7 +112,7 @@
         "format": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": ["", "", ""],
-        "on-click-right": "pavucontrol",
+        "on-click-right": "kitty -e wiremix -v output",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 2
     },
@@ -120,7 +120,7 @@
         "node-type": "Audio/Source",
         "format": "{volume}% ",
         "format-muted": "",
-        "on-click-right": "pavucontrol",
+        "on-click-right": "kitty -e wiremix -v input",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "scroll-step": 2
     },
@@ -135,6 +135,6 @@
         "format-disconnected": "{ifname}  ",
         "tooltip-format": "{essid}({signalStrength}%)\n{ifname} {gwaddr}",
         "format-alt": "{ifname}: {ipaddr}/{cidr} ",
-        "on-click-right": "kitty -e nmtui"
+        "on-click-right": "kitty -e impala"
     }
 }
