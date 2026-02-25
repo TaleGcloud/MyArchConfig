@@ -13,7 +13,7 @@ binds {
 
     Mod+Shift+B hotkey-overlay-title="Refresh bar" { spawn-sh "pkill waybar || true && waybar"; }
 
-    Mod+Alt+I { spawn "hyprpicker"; }
+    Mod+Alt+I { spawn "hyprpicker" "-a" "-u200"; }
     Mod+Alt+P { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
 
