@@ -57,8 +57,28 @@ hotkey-overlay {
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
-    // opacity 0.9
     draw-border-with-background false
+    opacity 0.95
+    background-effect {
+        blur true
+    }
+}
+
+layer-rule {
+    match namespace="waybar"
+    match namespace="logout"
+    background-effect {
+        blur true
+    }
+}
+
+layer-rule {
+    geometry-corner-radius 4
+    match namespace="launcher"
+    background-effect {
+        blur true
+        xray false
+    }
 }
 
 layer-rule {
