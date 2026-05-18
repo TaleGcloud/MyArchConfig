@@ -17,22 +17,22 @@ tooltip label {
     font-size: 15px;
 }
 
-.niri-taskbar button {
-    min-width: 13px;  /* GTK 专属：图标宽度，按需调整（14-20px适配Waybar） */
-    min-height: 18px; /* GTK 专属：图标高度，与宽度一致保证正方形图标 */
+#taskbar button {
+    min-width: 13px;    /* GTK 专属：图标宽度，按需调整（14-20px适配Waybar） */
+    min-height: 18px;   /* GTK 专属：图标高度，与宽度一致保证正方形图标 */
     background: transparent;
-    border-radius: 0; /* 保留你的直角配置 */
+    border-radius: 0;   /* 保留你的直角配置 */
     transition: all 0.4s ease; /* 平滑过渡悬浮/聚焦效果 */
-    border: none; /* GTK 可选：去除按钮默认边框，贴合透明风格 */
-    padding: 4px 6px; /* 可选：微调内边距，让图标与按钮更贴合 */
+    border: none;       /* GTK 可选：去除按钮默认边框，贴合透明风格 */
+    padding: 4px 6px;   /* 可选：微调内边距，让图标与按钮更贴合 */
 }
-.niri-taskbar button:hover {
+#taskbar button:hover {
     border: none;
     box-shadow: none;
-    background: rgba(80, 80, 80, 0.5);
+    background: rgba(200, 200, 200, 0.5);
 }
-.niri-taskbar button.focused {
-    background: rgba(40, 40, 40, 0.5);
+#taskbar button.active {
+    background: rgba(150, 150, 150, 0.5);
 }
 
 #workspaces button {

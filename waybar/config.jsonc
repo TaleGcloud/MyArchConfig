@@ -9,7 +9,7 @@
         "disk",
         "battery",
         // "niri/workspaces",
-        "cffi/niri-taskbar",
+        "wlr/taskbar",
         "niri/window"
     ],
     "modules-center": [
@@ -59,9 +59,10 @@
         "spacing": 6,
         "opacity-empty": 0.4
     },
-    "cffi/niri-taskbar": {
-        "module_path": "/home/TaleG/.config/waybar/libniri_taskbar.so",
-        "display_mode": "by_workspace"
+    "wlr/taskbar": {
+        "icon-size": 16,
+        "on-click": "activate",
+        "on-click-middle": "close"
     },
     "niri/window": {
         "separate-outputs": true,
@@ -98,12 +99,12 @@
             "default": "󰎆"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py -x edge 2> /dev/null",
+        "exec": "$HOME/.config/waybar/mediaplayer.py -x firefox 2> /dev/null",
         "tooltip-format": "{text}",
         "tooltip": true,
-        "on-click": "playerctl -i edge play-pause",
-        "on-scroll-up": "playerctl -i edge previous",
-        "on-scroll-down": "playerctl -i edge next"
+        "on-click": "playerctl -i firefox play-pause",
+        "on-scroll-up": "playerctl -i firefox previous",
+        "on-scroll-down": "playerctl -i firefox next"
     },
     "tray": {
         "spacing": 10
